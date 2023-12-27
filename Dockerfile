@@ -4,6 +4,8 @@ FROM $BUILD_FROM
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+COPY requirements.txt /tmp/
+
 # Setup base
 # hadolint ignore=DL3003,DL3042
 RUN \
@@ -18,7 +20,7 @@ RUN \
     \
     && apk add --update py-tz \
     \
-    && pip install appdaemon==4.4.2 \
+    && pip install -r /tmp/requirements.txt \
     \
     && find /usr \
         \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
