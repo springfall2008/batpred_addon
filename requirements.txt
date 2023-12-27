@@ -1,2 +1,13 @@
-appdaemon==4.4.2
-pytz
+gunicorn
+paho-mqtt
+scapy
+schedule
+requests
+flask
+pickle-mixin
+flask-cors
+rq
+redis
+npm
+async_timeout
+vite
