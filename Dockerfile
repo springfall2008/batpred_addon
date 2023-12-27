@@ -20,7 +20,8 @@ RUN \
     \
     && apk add --update py-tz \
     \
-    && pip install --break-system-packages -r /tmp/requirements.txt \
+    && pip install --break-system-packages appdaemon==4.4.2 \
+    && python3 pip install --break-system-packages pytz \
     \
     && find /usr \
         \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
