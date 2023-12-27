@@ -24,10 +24,10 @@ startup: services
 host_network: true
 options:
   MQTT_OUTPUT: True
-  MQTT_ADDRESS: "core-mosquitto"
-  MQTT_USERNAME: ""
-  MQTT_PASSWORD: ""
-  MQTT_TOPIC: ""
+  MQTT_ADDRESS: "homeassistant.local"
+  MQTT_USERNAME: "mqtt"
+  MQTT_PASSWORD: "mqttPASS"
+  MQTT_TOPIC: "Predbat"
   MQTT_PORT: 1883
   MQTT_RETAIN: False
   HOSTIP: "homeassistant.local"
