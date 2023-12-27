@@ -1,6 +1,4 @@
-gunicorn
 paho-mqtt
-scapy
 schedule
 requests
 flask
@@ -10,6 +8,5 @@ rq
 redis
 npm
 async_timeout
-vite
 pytz
-yaml
+python-yaml
