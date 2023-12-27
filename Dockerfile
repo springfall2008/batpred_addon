@@ -1,41 +1,37 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+# set base image (host OS)
+FROM python:rc-alpine
 
-# Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+RUN apk add mosquitto
+RUN apk add curl
+RUN apk add --update npm
+RUN npm install -g serve
+RUN apk add git
+RUN apk add tzdata
+RUN apk add musl-utils
+RUN apk add xsel
+RUN apk add redis
+RUN apk add npm
+RUN apk add nginx && mkdir -p /run/nginx
 
-COPY requirements.txt /tmp/
+# set the working directory in the container
+WORKDIR /app
 
-# Setup base
-# hadolint ignore=DL3003,DL3042
-RUN \
-    apk add --no-cache --virtual .build-dependencies \
-    build-base=0.5-r3 \
-    python3-dev=3.11.6-r1 \
-    py-tz \
-    \
-    && apk add --no-cache \
-    py3-pip=23.3.1-r0 \
-    py3-wheel=0.42.0-r0 \
-    python3=3.11.6-r1 \
-    py-tz \
-    \
-    && pip install --break-system-packages appdaemon==4.4.2 \
-    \
-    && find /usr \
-    \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
-    -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
-    -exec rm -rf '{}' + \
-    \
-    && apk del --no-cache --purge .build-dependencies
+# copy the dependencies file to the working directory
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Python 3 HTTP Server serves the current working dir
-# So let's set it to our add-on persistent data directory.
-WORKDIR /data
+COPY batpred.py batpred.py
 
-# Copy data for add-on
-COPY run.sh /
-COPY batpred.py /
-RUN chmod a+x /run.sh
+ENV MQTT_OUTPUT=True
+ENV MQTT_ADDRESS=""
+ENV MQTT_USERNAME=""
+ENV MQTT_PASSWORD=""
+ENV MQTT_TOPIC=""
+ENV MQTT_TOPIC_2=""
+ENV MQTT_TOPIC_3=""
+ENV MQTT_PORT=1883
+ENV MQTT_RETAIN=False
+ENV LOG_LEVEL="Info"
+ENV PYTHONPATH="/app"
 
-CMD [ "/run.sh" ]
+CMD ["python3", "/app/batpred.py"]
