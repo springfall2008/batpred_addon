@@ -27,7 +27,7 @@ options:
   MQTT_ADDRESS: "homeassistant.local"
   MQTT_USERNAME: "mqtt"
   MQTT_PASSWORD: "mqttPASS"
-  MQTT_TOPIC: "Predbat"
+  MQTT_TOPIC: "Batpred"
   MQTT_PORT: 1883
   MQTT_RETAIN: False
   HOSTIP: "homeassistant.local"
