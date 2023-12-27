@@ -1,6 +1,6 @@
 name: "Batpred"
 description: "Batpred add-on"
-version: "1.0.16"
+version: "1.0.17"
 slug: "batpred"
 init: true
 arch:
@@ -28,8 +28,6 @@ options:
   MQTT_USERNAME: ""
   MQTT_PASSWORD: ""
   MQTT_TOPIC: ""
-  MQTT_TOPIC_2: ""
-  MQTT_TOPIC_3: ""
   MQTT_PORT: 1883
   MQTT_RETAIN: False
   HOSTIP: "homeassistant.local"
@@ -39,8 +37,6 @@ schema:
   MQTT_USERNAME: "str?"
   MQTT_PASSWORD: "str?"
   MQTT_TOPIC: "str?"
-  MQTT_TOPIC_2: "str?"
-  MQTT_TOPIC_3: "str?"
   MQTT_PORT: int
   MQTT_RETAIN: bool
   HOSTIP: str
