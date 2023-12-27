@@ -1,7 +1,7 @@
-name: "Hello world"
-description: "My first real add-on!"
+name: "Batpred"
+description: "Batpred add-on"
 version: "1.0.0"
-slug: "hello_world"
+slug: "batpred"
 init: false
 arch:
   - aarch64
