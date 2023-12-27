@@ -10,23 +10,22 @@ COPY requirements.txt /tmp/
 # hadolint ignore=DL3003,DL3042
 RUN \
     apk add --no-cache --virtual .build-dependencies \
-        build-base=0.5-r3 \
-        python3-dev=3.11.6-r1 \
+    build-base=0.5-r3 \
+    python3-dev=3.11.6-r1 \
+    py-tz \
     \
     && apk add --no-cache \
-        py3-pip=23.3.1-r0 \
-        py3-wheel=0.42.0-r0 \
-        python3=3.11.6-r1 \
-    \
-    && apk add --update py-tz \
+    py3-pip=23.3.1-r0 \
+    py3-wheel=0.42.0-r0 \
+    python3=3.11.6-r1 \
+    py-tz \
     \
     && pip install --break-system-packages appdaemon==4.4.2 \
-    && python3 -m pip install --break-system-packages pytz \
     \
     && find /usr \
-        \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
-        -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
-        -exec rm -rf '{}' + \
+    \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
+    -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
+    -exec rm -rf '{}' + \
     \
     && apk del --no-cache --purge .build-dependencies
 
