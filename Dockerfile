@@ -20,7 +20,7 @@ RUN \
     \
     && apk add --update py-tz \
     \
-    && pip install -r /tmp/requirements.txt \
+    && pip install --break-system-packages -r /tmp/requirements.txt \
     \
     && find /usr \
         \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
