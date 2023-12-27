@@ -12,3 +12,4 @@ npm
 async_timeout
 vite
 pytz
+yaml
