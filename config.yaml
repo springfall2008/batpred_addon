@@ -1,6 +1,6 @@
 name: "Batpred"
 description: "Batpred add-on"
-version: "1.0.13"
+version: "1.0.14"
 slug: "batpred"
 init: false
 arch:
