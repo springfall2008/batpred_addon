@@ -9,6 +9,14 @@ arch:
   - armhf
   - armv7
   - i386
+homeassistant_api: true
+uart: true
+map:
+  - addon_config:rw
+  - homeassistant_config:rw
+  - media:rw
+  - share:rw
+  - ssl
 startup: services
 ports:
   8000/tcp: 8000
