@@ -12,6 +12,7 @@ RUN apk add xsel
 RUN apk add redis
 RUN apk add npm
 RUN apk add nginx && mkdir -p /run/nginx
+RUN apk add py-tz
 
 # set the working directory in the container
 WORKDIR /app
