@@ -2,15 +2,18 @@ name: "Batpred"
 description: "Batpred add-on"
 version: "1.0.15"
 slug: "batpred"
-init: false
+init: true
 arch:
   - aarch64
   - amd64
   - armhf
   - armv7
   - i386
+services:
+  - "mqtt:want"
 homeassistant_api: true
 uart: true
+boot:  auto
 map:
   - addon_config:rw
   - homeassistant_config:rw
@@ -18,5 +21,26 @@ map:
   - share:rw
   - ssl
 startup: services
-ports:
-  8000/tcp: 8000
+host_network: true
+options:
+  MQTT_OUTPUT: True
+  MQTT_ADDRESS: "core-mosquitto"
+  MQTT_USERNAME: ""
+  MQTT_PASSWORD: ""
+  MQTT_TOPIC: ""
+  MQTT_TOPIC_2: ""
+  MQTT_TOPIC_3: ""
+  MQTT_PORT: 1883
+  MQTT_RETAIN: False
+  HOSTIP: "homeassistant.local"
+schema: 
+  MQTT_OUTPUT: bool
+  MQTT_ADDRESS: str
+  MQTT_USERNAME: "str?"
+  MQTT_PASSWORD: "str?"
+  MQTT_TOPIC: "str?"
+  MQTT_TOPIC_2: "str?"
+  MQTT_TOPIC_3: "str?"
+  MQTT_PORT: int
+  MQTT_RETAIN: bool
+  HOSTIP: str
