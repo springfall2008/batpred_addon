@@ -9,4 +9,4 @@ redis
 npm
 async_timeout
 pytz
-python-yaml
+pyyaml
