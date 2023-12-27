@@ -16,6 +16,8 @@ RUN \
         py3-wheel=0.42.0-r0 \
         python3=3.11.6-r1 \
     \
+    && pip3 install pytz \
+    \
     && find /usr \
         \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
         -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
